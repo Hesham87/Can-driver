@@ -585,8 +585,8 @@ void CAN_Configure(uint32_t portCode, uint32_t RX_PIN, uint32_t TX_PIN, uint32_t
 	// Enable GPIO clock
 	SYSCTL_RCGCGPIO_R |= portCode;
 	while ((SYSCTL_PRGPIO_R & portCode) == 0);
-	// add one to the pins to enable the alternate function for can recive and can transmit the RX and TX of CAN i.e PE5 = 5 and PE4 = 4
-	GPIO_PORTE_AFSEL_R = (RX_PIN + 1) | (TX_PIN + 1);
+	// enable the alternate function for can recive and can transmit the RX and TX
+	GPIO_PORTE_AFSEL_R = (RX_PIN) | (TX_PIN);
 	// Since the PCTL number for can is always 8 then shift it by 4*pin number to get to the right position
 	GPIO_PORTE_PCTL_R = ((uint32_t)(0x8) << (RX_PIN*4)) | ((uint32_t)(0x8) << (TX_PIN*4));
 	SYSCTL_RCGC0_R |= clockNumber;
