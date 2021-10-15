@@ -297,6 +297,10 @@ typedef enum
 // This is the maximum number 11bit Message identifier.
 
 #define CAN_11BIT_ID_MAX    0x7ff
+
+// This is the PCTL offset for can protocol
+
+#define CAN_PCTL	0x00000008
 //__________________________________________________________________________________________
 
 extern void CAN_Enable(uint32_t ui32Base);
